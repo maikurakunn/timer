@@ -8,16 +8,17 @@ const resetBtn = document.getElementById("reset-btn");
 
 function updateTimerDisplay() {
   const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
-  const secs = String(seconds % 60).padStart(2, "0");
-  timerDisplay.textContent = `${mins}:${secs}`;
+  const secs = String(Math.floor(seconds % 60)).padStart(2, "0");
+  const millis = String(Math.floor((seconds % 1) * 100)).padStart(2, "0");
+  timerDisplay.textContent = `${mins}:${secs}.${millis}`;
 }
 
 startBtn.addEventListener("click", () => {
   if (!timer) {
     timer = setInterval(() => {
-      seconds++;
+      seconds += 0.1; // 小数点以下の管理
       updateTimerDisplay();
-    }, 1000);
+    }, 100); // 更新間隔を100msに設定
   }
 });
 
