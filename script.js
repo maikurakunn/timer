@@ -16,7 +16,7 @@ function updateTimerDisplay() {
 startBtn.addEventListener("click", () => {
   if (!timer) {
     timer = setInterval(() => {
-      seconds += 0.1; // 小数点以下の管理
+      seconds += 0.2; // 小数点以下の管理
       updateTimerDisplay();
     }, 100); // 更新間隔を100msに設定
   }
@@ -33,3 +33,4 @@ resetBtn.addEventListener("click", () => {
   seconds = 0;
   updateTimerDisplay();
 });
+
